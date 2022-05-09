@@ -16,7 +16,8 @@ my_fruit_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/da
 my_fruit_list = my_fruit_list.set_index('Fruit')
 
 # adding a selector widget (multy-select. ie' filter)
-streamlit.multiselect('Pick some Fruits:',list(my_fruit_list.index),['Avocado', 'Strawberries'])
+selected_fruits = streamlit.multiselect('Pick some Fruits:',list(my_fruit_list.index),['Avocado', 'Strawberries'])
+fruits_to_show = my_fruit_list.loc[selected_fruits]
 
 # this will output our df in the app(browser)
-streamlit.dataframe(my_fruit_list)
+streamlit.dataframe(fruits_to_show)
