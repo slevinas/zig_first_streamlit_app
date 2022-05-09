@@ -23,7 +23,7 @@ fruits_to_show = my_fruit_list.loc[selected_fruits]
 st.dataframe(fruits_to_show)
 
 name = st.text_input('Name')
-if not name:
+if  name=="":
   st.warning('Please input a name.')
   st.stop()
 st.success('Thank you for inputting a name.')
