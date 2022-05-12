@@ -48,7 +48,7 @@ my_cur.execute("select * from fruit_load_list")
 my_data_row = my_cur.fetchall()
 st.header("The Fruit load list contains:")
 st.dataframe(my_data_row)
-userinput_fruit_choice2 = st.text_input('what fruit would you like info about?', 'Kiwi')
+userinput_fruit_choice2 = st.text_input('what fruit would you like info about?', 'mango')
 st.write('The user entered', userinput_fruit_choice2)
 
 # name = st.text_input('Name')
