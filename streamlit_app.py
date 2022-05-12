@@ -30,9 +30,9 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon"
 st.text(fruityvice_response.json())
 
 # take the json version of the response and normlize it 
-fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 # output it as a table 
-st.dataframe(fruityvice_normalized)
+st.pd(fruityvice_normalized)
 
 
 # name = st.text_input('Name')
