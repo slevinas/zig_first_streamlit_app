@@ -42,9 +42,10 @@ my_cur = my_cnx.cursor()
 # st.text("Hello from Snowflake:")
 # st.text(my_data_row)
 my_cur.execute("select * from fruit_load_list")
-
-my_data_row = my_cur.fetchone()
-
+# fetchone()- returns one row..
+#my_data_row = my_cur.fetchone()
+# to returnt all the rows we use fetchall()
+my_data_row = my_cur.fetchall()
 st.header("The Fruit load list contains:")
 st.dataframe(my_data_row)
 
