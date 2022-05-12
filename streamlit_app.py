@@ -44,8 +44,9 @@ my_cur = my_cnx.cursor()
 my_cur.execute("select * from fruit_load_list")
 
 my_data_row = my_cur.fetchone()
-st.text("The Fruit load list contains:")
-st.text(my_data_row)
+
+st.header("The Fruit load list contains:")
+st.dataframe(my_data_row)
 
 
 # name = st.text_input('Name')
