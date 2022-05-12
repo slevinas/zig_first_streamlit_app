@@ -21,12 +21,15 @@ fruits_to_show = my_fruit_list.loc[selected_fruits]
 
 # this will output our df in the app(browser)
 st.dataframe(fruits_to_show)
-
-
 # New Section to display fruityvice api response
-import requests
 st.header('Fruityvice Fruit Advice!')
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + "kiwi")
+userinput_fruit_choice = st.text_input('what fruit would you like info about?', 'Kiwi')
+st.write('The user entered', userinput_fruit_choice)
+
+
+import requests
+
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + userinput_fruit_choice)
 # st.text(fruityvice_response.json())  # just writs the data to the screen
 
 # take the json version of the response and normlize it 
