@@ -26,9 +26,7 @@ st.header('Fruityvice Fruit Advice!')
 userinput_fruit_choice = st.text_input('what fruit would you like info about?', 'Kiwi')
 st.write('The user entered', userinput_fruit_choice)
 
-
 import requests
-
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + userinput_fruit_choice)
 # st.text(fruityvice_response.json())  # just writs the data to the screen
 
@@ -38,6 +36,12 @@ fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 st.dataframe(fruityvice_normalized)
 import snowflake.connector
 
+my_cnx = snowflake.connector.connect(**st.screts["snowflake"])
+my_cur = my_cnx.cursor()
+my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOOUNT(), CURRENT_REGION()")
+my_data_row = my_cur.fetchone()
+st.text("Hello from Snowflake:")
+st.text(my_data_row)
 
 # name = st.text_input('Name')
 # if  name=="":
