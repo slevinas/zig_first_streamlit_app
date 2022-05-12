@@ -32,7 +32,7 @@ st.text(fruityvice_response.json())
 # take the json version of the response and normlize it 
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 # output it as a table 
-st.pd(fruityvice_normalized)
+st.dataframe(fruityvice_normalized)
 
 
 # name = st.text_input('Name')
