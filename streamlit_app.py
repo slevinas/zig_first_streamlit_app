@@ -29,16 +29,18 @@ st.dataframe(fruits_to_show) ##                                                 
 
 # New Section to display fruityvice api response
 st.header('Fruityvice Fruit Advice!')
-userinput_fruit_choice = st.text_input('what fruit would you like info about?', 'Kiwi')
-st.write('The user entered', userinput_fruit_choice)
-
-
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + userinput_fruit_choice)
-# st.text(fruityvice_response.json())  # just writs the data to the screen
-
-# take the json version of the response and normlize it 
-fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
-st.dataframe(fruityvice_normalized)                           # = output the api-results and display it as a table 
+try:
+  userinput_fruit_choice = st.text_input('what fruit would you like info about?')
+  if not userinput_fruit_choice:
+    st.error("Please select a fruit to get info. ")
+   else:
+    fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + userinput_fruit_choice)
+    # take the json version of the response and normlize it 
+    fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+    st.dataframe(fruityvice_normalized)                           # = output the api-results and display it as a table 
+ accept URLError as e:
+  st.error()
+  
 # don't run anything past het while we trubleshoot
 st.stop()
 
