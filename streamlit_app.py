@@ -52,7 +52,7 @@ st.dataframe(fruits_to_show) ##                                                 
 # New Section to display fruityvice api response
 st.header('Fruityvice Fruit Advice!')
 try:
-  userinput_fruit_choice = st.text_input('what fruit would you like info about?')
+  #userinput_fruit_choice = st.text_input('what fruit would you like info about?')
   if not userinput_fruit_choice:
     st.error("Please select a fruit to get info. ")
   else:
@@ -77,9 +77,10 @@ st.header("The Fruit load list contains:")
 
 # Adding a button to load the   # function calll... 
 if st.button('Get Fruit Load List'):
+  st.write('Thanks for adding ', add_my_fruit)
   my_cur.execute("insert into fruit_load_list values (st.text_input('what fruit would you like info about?',str(userinput_fruit_choice2)))")
 
-  st.write('Thanks for adding ', userinput_fruit_choice2)
+  
   
 my_data_rows = get_snowflake_fruit_table()
 st.dataframe(my_data_rows)  ##                 Last display a query-result from snowflake's tablez
