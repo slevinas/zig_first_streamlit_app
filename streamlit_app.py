@@ -74,21 +74,15 @@ my_cur = my_cnx.cursor()
 
 userinput_fruit_choice2 = st.text_input('what fruit would you like info about?')
 from_streamlit = userinput_fruit_choice2
+st.header("The Fruit load list contains:")
+
 # Adding a button to load the   # function calll... 
 if st.button('Get Fruit Load List'):
   st.write('Thanks for adding ', userinput_fruit_choice2)
-  
   my_cur.execute("insert into fruit_load_list values (from_streamlit)")
   my_data_rows = get_snowflake_fruit_table()
-  st.dataframe(my_data_rows)
+st.dataframe(my_data_rows)  ##                 Last display a query-result from snowflake's tablez
   
-
-  
-
-  
-
-
-
 # fetchone()- returns one row..
 #my_data_row = my_cur.fetchone()
 #st.dataframe(my_data_row)      ##                        display a query-result from snowflake's tablez
@@ -97,24 +91,6 @@ if st.button('Get Fruit Load List'):
 #st.dataframe(my_data_rows)
 
 #########
-
-
-
-
-
-
-
-
-
-
-
-
-st.header("The Fruit load list contains:")
-my_data_rows = get_snowflake_fruit_table()
-st.dataframe(my_data_rows)        ##                 Last display a query-result from snowflake's tablez
-
-              
-
 
 
 # name = st.text_input('Name')
