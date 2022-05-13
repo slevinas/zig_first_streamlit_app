@@ -80,7 +80,8 @@ st.header("The Fruit load list contains:")
 if st.button('Get Fruit Load List'):
   st.write('Thanks for adding ', userinput_fruit_choice2)
   my_cur.execute("insert into fruit_load_list values (from_streamlit)")
-  my_data_rows = get_snowflake_fruit_table()
+  
+my_data_rows = get_snowflake_fruit_table()
 st.dataframe(my_data_rows)  ##                 Last display a query-result from snowflake's tablez
   
 # fetchone()- returns one row..
