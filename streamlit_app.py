@@ -27,7 +27,7 @@ def get_snowflake_fruit_table():
 
 
 
-  
+   
 st.title('My Parents New Diner')
 st.header('Breakfast Favorites')
 st.text('🥣 Omega 3 & Blueberry Oatmeal')
