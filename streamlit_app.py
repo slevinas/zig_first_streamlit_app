@@ -78,7 +78,7 @@ st.header("The Fruit load list contains:")
 # Adding a button to load the   # function calll... 
 if st.button('Get Fruit Load List'):
   st.write('Thanks for adding ', userinput_fruit_choice2)
-  my_cur.execute("insert into fruit_load_list values (userinput_fruit_choice2)")
+  my_cur.execute("insert into fruit_load_list values (st.text_input('what fruit would you like info about?','tomato'))")
   
 my_data_rows = get_snowflake_fruit_table()
 st.dataframe(my_data_rows)  ##                 Last display a query-result from snowflake's tablez
