@@ -69,6 +69,8 @@ except URLError as e:
 # st.text("Hello from Snowflake:")
 # st.text(my_data_row)
 
+my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+my_cur = my_cnx.cursor()
 
 # Adding a button to load the   # function calll... 
 if st.button('Get Fruit Load List'):
@@ -102,8 +104,7 @@ my_cur.execute("insert into fruit_load_list values ('from_streamlit')")
 
 
 st.header("The Fruit load list contains:")
-my_cur.execute("select * from fruit_load_list") # reads a table from snowflake
-my_data_rows = my_cur.fetchall()
+my_data_rows = get_snowflake_fruit_table()
 st.dataframe(my_data_rows)        ##                 Last display a query-result from snowflake's tablez
 
               
