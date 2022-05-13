@@ -73,15 +73,16 @@ my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 
 userinput_fruit_choice2 = st.text_input('what fruit would you like info about?')
-
+from_streamlit = userinput_fruit_choice2
 # Adding a button to load the   # function calll... 
 if st.button('Get Fruit Load List'):
-  from_streamlit = userinput_fruit_choice2
+  st.write('Thanks for adding ', userinput_fruit_choice2)
+  
   my_cur.execute("insert into fruit_load_list values (from_streamlit)")
   my_data_rows = get_snowflake_fruit_table()
   st.dataframe(my_data_rows)
   
-st.write('The user entered', userinput_fruit_choice2)
+
   
 
   
