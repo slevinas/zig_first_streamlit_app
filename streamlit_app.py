@@ -48,35 +48,28 @@ st.header("The Fruit load list contains:")
 # snowflake related functions
 def get_fruit_load_list():
   with  my_cnx.cursor() as my_cur:
-    my_cur.execute("select * from fruit_load_list") # reads a table from snowflake
+    my_cur.execute("select * from fruit_load_list").          # reads a table from snowflake
     return my_cur.fetchall()
 
 # Ass a button to load the fruit 
 if st.button('Get Fruit Load List'):
   my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
   my_data_rows = get_fruit_load_list()
-  st.dataframe(my_data_rows) ##
+  st.dataframe(my_data_rows) ##                                # reads a table from snowflake
   
   
 def insert_row_snowflake(new_fruit):
   with my_cnx.cursor() as my_cur:
-   
     my_cur.execute(" insert into fruit_load_list values('" +  new_fruit +"')")
     return "Thanks for adding " + "new_fruit"
  
-
+add_my_fruit = st.text_input('what fruit would you like add?')     # display text and a grey-text-box-placeholder below the text, to enter input on screen
 if st.button('Add a Fruit to the List'):
-  add_my_fruit = st.text_input('what fruit would you like add?')   # display text and a grey-text-box-placeholder below the text, to enter input on screen
   my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-  try:
-      if not add_my_fruit:
-          st.error("Please select a valid fruit to insert. ")                       # display red-text-box(errot) and the text("Please select a fruit to get info.)
-      else:
-          texttodisplay = insert_row_snowflake(add_my_fruit)
-          st.text(texttodisplay)                          # display output 
-  except URLError as e:
-      st.error()   
-  st.write('Thanks for adding ', add_my_fruit)
+  back_from_function = insert_row_snowflake(add_my_fruit)
+  st.text(texttodisplay)                                              # display output 
+
+  st.write('Thanks for adding ', add_my_fruit)                        # display output the text "Thanks for adding "
     
 #userinput_fruit_choice =  st.text_input('what fruit would you like info about?')
 #userinput_fruit_choice2 = st.text_input('what fruit would you like info about?','tomato')
