@@ -88,8 +88,7 @@ def insert_row_snowflake(new_fruit):
     return "Thanks for adding " + "new_fruit"
   
 add_my_fruit = st.text_input('what fruit would you like info about?')
-
-  st.write('Thanks for adding ', add_my_fruit)
+st.write('Thanks for adding ', add_my_fruit)
     
 #userinput_fruit_choice =  st.text_input('what fruit would you like info about?')
 #userinput_fruit_choice2 = st.text_input('what fruit would you like info about?','tomato')
