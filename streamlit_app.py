@@ -47,7 +47,7 @@ my_cur = my_cnx.cursor()
 
 my_cur.execute("select * from fruit_load_list") # reads a table from snowflake
 my_data_rows = my_cur.fetchall()
-st.dataframe(my_data_rows).
+st.dataframe(my_data_rows)
 
 # fetchone()- returns one row..
 #my_data_row = my_cur.fetchone()
