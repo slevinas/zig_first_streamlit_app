@@ -52,7 +52,7 @@ st.dataframe(fruits_to_show) ##                                                 
 # New Section to display fruityvice api response
 st.header('Fruityvice Fruit Advice!')
 try:
-  #userinput_fruit_choice = st.text_input('what fruit would you like info about?')
+  userinput_fruit_choice = st.text_input('what fruit would you like info about?')
   if not userinput_fruit_choice:
     st.error("Please select a fruit to get info. ")
   else:
@@ -74,6 +74,9 @@ my_cur = my_cnx.cursor()
 #userinput_fruit_choice2 = st.text_input('what fruit would you like info about?','tomato')
 #from_streamlit = userinput_fruit_choice2
 st.header("The Fruit load list contains:")
+
+add_my_fruit = st.text_input('what fruit would you like info about?')
+
 
 # Adding a button to load the   # function calll... 
 if st.button('Get Fruit Load List'):
