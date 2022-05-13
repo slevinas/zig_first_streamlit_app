@@ -94,7 +94,7 @@ userinput_fruit_choice2 = st.text_input('what fruit would you like info about?',
 from_streamlit = userinput_fruit_choice2
 st.write('The user entered', userinput_fruit_choice2)
 
-my_cur.execute("insert into fruit_load_list values ('from_streamlit')")
+my_cur.execute("insert into fruit_load_list values (from_streamlit)")
 
 
 
