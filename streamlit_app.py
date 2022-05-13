@@ -63,7 +63,7 @@ except URLError as e:
     st.error()
   
 # don't run anything past het while we trubleshoot
-st.stop()
+#st.stop()
 
 #my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 # st.text("Hello from Snowflake:")
