@@ -43,7 +43,7 @@ except URLError as e:
     st.error()
   
 
-st.stop()
+#st.stop()
 st.header("The Fruit load list contains:")
 # snowflake related functions
 def get_fruit_load_list():
