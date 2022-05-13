@@ -72,7 +72,7 @@ except URLError as e:
 my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 
-userinput_fruit_choice2 = st.text_input('what fruit would you like info about?',tomato)
+userinput_fruit_choice2 = st.text_input('what fruit would you like info about?','tomato')
 from_streamlit = userinput_fruit_choice2
 st.header("The Fruit load list contains:")
 
