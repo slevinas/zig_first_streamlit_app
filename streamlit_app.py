@@ -33,13 +33,13 @@ try:
   userinput_fruit_choice = st.text_input('what fruit would you like info about?')
   if not userinput_fruit_choice:
     st.error("Please select a fruit to get info. ")
-   else:
+  else:
     fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + userinput_fruit_choice)
     # take the json version of the response and normlize it 
     fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
     st.dataframe(fruityvice_normalized)                           # = output the api-results and display it as a table 
- accept URLError as e:
-  st.error()
+except URLError as e:
+    st.error()
   
 # don't run anything past het while we trubleshoot
 st.stop()
