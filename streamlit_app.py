@@ -21,6 +21,7 @@ fruits_to_show = my_fruit_list.loc[selected_fruits]
 
 # this will output our df in the app(browser)
 st.dataframe(fruits_to_show)
+
 # New Section to display fruityvice api response
 st.header('Fruityvice Fruit Advice!')
 userinput_fruit_choice = st.text_input('what fruit would you like info about?', 'Kiwi')
@@ -41,13 +42,17 @@ my_cur = my_cnx.cursor()
 #my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 # st.text("Hello from Snowflake:")
 # st.text(my_data_row)
-my_cur.execute("select * from fruit_load_list")
+
+
 # fetchone()- returns one row..
 #my_data_row = my_cur.fetchone()
 # to returnt all the rows we use fetchall()
-my_data_row = my_cur.fetchall()
+
+
 st.header("The Fruit load list contains:")
+my_data_row = my_cur.fetchall()
 st.dataframe(my_data_row)
+
 userinput_fruit_choice2 = st.text_input('what fruit would you like info about?', 'mango')
 st.write('The user entered', userinput_fruit_choice2)
 
