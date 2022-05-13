@@ -75,7 +75,7 @@ my_cur.execute("insert into fruit_load_list values ('from_streamlit')")
 st.header("The Fruit load list contains:")
 my_cur.execute("select * from fruit_load_list") # reads a table from snowflake
 my_data_rows = my_cur.fetchall()
-st.dataframe(my_data_rows).  ##                 Last display a query-result from snowflake's tablez
+st.dataframe(my_data_rows)        ##                 Last display a query-result from snowflake's tablez
 
               
 
