@@ -33,8 +33,9 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + userinp
 
 # take the json version of the response and normlize it 
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
-
 st.dataframe(fruityvice_normalized)                           # = output the api-results and display it as a table 
+# don't run anything past het while we trubleshoot
+st.stop()
 
 import snowflake.connector
 
