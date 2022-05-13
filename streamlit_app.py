@@ -20,7 +20,7 @@ selected_fruits = st.multiselect('Pick some Fruits:',list(my_fruit_list.index),[
 fruits_to_show = my_fruit_list.loc[selected_fruits]
 
 # this will output our df in the app(browser)
-st.dataframe(fruits_to_show)
+st.dataframe(fruits_to_show) ##                                                                   First output display of a fruit list 
 
 # New Section to display fruityvice api response
 st.header('Fruityvice Fruit Advice!')
@@ -33,28 +33,50 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + userinp
 
 # take the json version of the response and normlize it 
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
-# output it as a table 
-st.dataframe(fruityvice_normalized)
+
+st.dataframe(fruityvice_normalized)                                              # = output the api-results and display it as a table 
+
 import snowflake.connector
 
 my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 my_cur = my_cnx.cursor()
+
 #my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 # st.text("Hello from Snowflake:")
 # st.text(my_data_row)
 
+my_cur.execute("select * from fruit_load_list") # reads a table from snowflake
+my_data_rows = my_cur.fetchall()
+st.dataframe(my_data_rows).
 
 # fetchone()- returns one row..
 #my_data_row = my_cur.fetchone()
+#st.dataframe(my_data_row). ##                                    display a query-result from snowflake's tablez(
 # to returnt all the rows we use fetchall()
+#my_data_rows = my_cur.fetchall()
+#st.dataframe(my_data_rows).
+
+#########
+
+userinput_fruit_choice2 = st.text_input('what fruit would you like info about?', 'mango')
+
+from_streamlit = userinput_fruit_choice2
+st.write('The user entered', userinput_fruit_choice2)
+
+my_cur.execute("insert into fruit_load_list values ('from_streamlit')")
+
+
+
+
+
+
 
 
 st.header("The Fruit load list contains:")
 my_data_row = my_cur.fetchall()
-st.dataframe(my_data_row)
+st.dataframe(my_data_row). ##                                   Last display a query-result from snowflake's tablez(
 
-userinput_fruit_choice2 = st.text_input('what fruit would you like info about?', 'mango')
-st.write('The user entered', userinput_fruit_choice2)
+
 
 # name = st.text_input('Name')
 # if  name=="":
