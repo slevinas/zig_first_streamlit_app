@@ -70,15 +70,16 @@ except URLError as e:
 
 my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 my_cur = my_cnx.cursor()
-
-userinput_fruit_choice2 = st.text_input('what fruit would you like info about?','tomato')
+#userinput_fruit_choice =  st.text_input('what fruit would you like info about?')
+#userinput_fruit_choice2 = st.text_input('what fruit would you like info about?','tomato')
 #from_streamlit = userinput_fruit_choice2
 st.header("The Fruit load list contains:")
 
 # Adding a button to load the   # function calll... 
 if st.button('Get Fruit Load List'):
+  my_cur.execute("insert into fruit_load_list values (st.text_input('what fruit would you like info about?',str(userinput_fruit_choice2)))")
+
   st.write('Thanks for adding ', userinput_fruit_choice2)
-  my_cur.execute("insert into fruit_load_list values (st.text_input('what fruit would you like info about?','tomato'))")
   
 my_data_rows = get_snowflake_fruit_table()
 st.dataframe(my_data_rows)  ##                 Last display a query-result from snowflake's tablez
