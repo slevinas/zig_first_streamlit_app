@@ -63,12 +63,23 @@ def insert_row_snowflake(new_fruit):
    
     my_cur.execute(" insert into fruit_load_list values('" +  new_fruit +"')")
     return "Thanks for adding " + "new_fruit"
-  
-add_my_fruit = st.text_input('what fruit would you like add?')
+ 
+
 if st.button('Add a Fruit to the List'):
   my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-  texttodisplay = insert_row_snowflake(add_my_fruit)
-  st.text(texttodisplay)
+  try:
+  add_my_fruit = st.text_input('what fruit would you like add?')   # display text and a grey-text-box-placeholder below the text, to enter input on screen
+  if not add_my_fruit:
+    st.error("Please select a valid fruit to insert. ")                       # display red-text-box(errot) and the text("Please select a fruit to get info.)
+  else:
+   
+    texttodisplay = insert_row_snowflake(add_my_fruit)
+    st.text(texttodisplay)                          # display output 
+except URLError as e:
+    st.error() 
+  
+  
+  
   
 st.write('Thanks for adding ', add_my_fruit)
     
