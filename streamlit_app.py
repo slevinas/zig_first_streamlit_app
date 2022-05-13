@@ -34,7 +34,7 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + userinp
 # take the json version of the response and normlize it 
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 
-st.dataframe(fruityvice_normalized)                                              # = output the api-results and display it as a table 
+st.dataframe(fruityvice_normalized)                           # = output the api-results and display it as a table 
 
 import snowflake.connector
 
@@ -51,10 +51,10 @@ st.dataframe(my_data_rows)
 
 # fetchone()- returns one row..
 #my_data_row = my_cur.fetchone()
-#st.dataframe(my_data_row). ##                                    display a query-result from snowflake's tablez(
+#st.dataframe(my_data_row)      ##                        display a query-result from snowflake's tablez
 # to returnt all the rows we use fetchall()
 #my_data_rows = my_cur.fetchall()
-#st.dataframe(my_data_rows).
+#st.dataframe(my_data_rows)
 
 #########
 
@@ -74,7 +74,7 @@ my_cur.execute("insert into fruit_load_list values ('from_streamlit')")
 
 st.header("The Fruit load list contains:")
 my_data_row = my_cur.fetchall()
-st.dataframe(my_data_row). ##                                   Last display a query-result from snowflake's tablez(
+st.dataframe(my_data_row)                ##                 Last display a query-result from snowflake's tablez
 
 
 
