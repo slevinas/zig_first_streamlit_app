@@ -39,11 +39,21 @@ selected_fruits = st.multiselect('Pick some Fruits:',list(my_fruit_list.index),[
 fruits_to_show = my_fruit_list.loc[selected_fruits]
 # this will output our df in the app(browser)
 st.dataframe(fruits_to_show) ## 
+  # New Section to display fruityvice api response
+st.header('Fruityvice Fruit Advice!')
 
+try:
+  userinput_fruit_choice = st.text_input('what fruit would you like info about?')
+  if not userinput_fruit_choice:
+    st.error("Please select a fruit to get info. ")
+  else:
+    fruityvice_normalized = get_frutyvice_data(userinput_fruit_choice)
+    st.dataframe(fruityvice_normalized)                           # = output the api-results and display it as a table 
+except URLError as e:
+    st.error()
+  
 
-
-
-
+st.stop()
 st.header("The Fruit load list contains:")
 # snowflake related functions
 def get_fruit_load_list():
@@ -60,19 +70,7 @@ if st.button('Get Fruit Load List'):
   
 
   
-  # New Section to display fruityvice api response
-st.header('Fruityvice Fruit Advice!')
-st.stop()
-try:
-  userinput_fruit_choice = st.text_input('what fruit would you like info about?')
-  if not userinput_fruit_choice:
-    st.error("Please select a fruit to get info. ")
-  else:
-    fruityvice_normalized = get_frutyvice_data(userinput_fruit_choice)
-    st.dataframe(fruityvice_normalized)                           # = output the api-results and display it as a table 
-except URLError as e:
-    st.error()
-  
+
 # don't run anything past het while we trubleshoot
 #st.stop()
 
