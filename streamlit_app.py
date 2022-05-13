@@ -58,10 +58,11 @@ if st.button('Get Fruit Load List'):
   st.dataframe(my_data_rows) ##
   
   
-st.stop()
+
   
   # New Section to display fruityvice api response
 st.header('Fruityvice Fruit Advice!')
+st.stop()
 try:
   userinput_fruit_choice = st.text_input('what fruit would you like info about?')
   if not userinput_fruit_choice:
