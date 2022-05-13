@@ -12,6 +12,21 @@ def get_frutyvice_data(this_fruit_chice):
    # take the json version of the response and normlize it 
   fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
   return fruityvice_normalized
+
+def get_snowflake_fruit_table():
+  """
+  this fuction connects to snowflake, query a table(fruit_list) and return all the rows
+  
+  """
+  my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+  with  my_cnx.cursor() as my_cur:
+    my_cur.execute("select * from fruit_load_list") # reads a table from snowflake
+    my_data_rows = my_cur.fetchall()
+    return my_data_rows
+
+
+
+
   
 st.title('My Parents New Diner')
 
@@ -50,17 +65,18 @@ except URLError as e:
 # don't run anything past het while we trubleshoot
 st.stop()
 
-
-my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-
 #my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 # st.text("Hello from Snowflake:")
 # st.text(my_data_row)
 
-my_cur.execute("select * from fruit_load_list") # reads a table from snowflake
-my_data_rows = my_cur.fetchall()
-st.dataframe(my_data_rows)
+
+# Adding a button to load the   # function calll... 
+if st.button('Get Fruit Load List'):
+  my_data_rows = get_snowflake_fruit_table()
+  st.dataframe(my_data_rows)
+  
+
+
 
 # fetchone()- returns one row..
 #my_data_row = my_cur.fetchone()
