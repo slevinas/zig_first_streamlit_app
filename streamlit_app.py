@@ -22,8 +22,12 @@ st.text('🥑🍞 Avocado Toast')
 st.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
 #my_fruit_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
-my_fruit_list = pd.read_csv("https://github.com/slevinas/zig_first_streamlit_app/blob/main/gggggg.csv",  names=('tag','query'))
+df = pd.read_csv("https://github.com/slevinas/zig_first_streamlit_app/blob/main/gggggg.csv",  names=('tag','query'))
+dataset2 = (df.groupby('tag', as_index=False).size().sort_values('size', ascending=False).reset_index(drop=True))
+st.dataframe(dataset2) 
+st.stop()
 
+st.dataframe(fruits_to_show) 
 # set the df index to the fruits names
 my_fruit_list = my_fruit_list.set_index('Fruit')
 # adding a selector widget (multy-select. ie' filter)
