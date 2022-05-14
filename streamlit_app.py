@@ -22,7 +22,7 @@ st.text('🥑🍞 Avocado Toast')
 st.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
 #my_fruit_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
-my_fruit_list = pd.read_csv("https://github.com/slevinas/zig_first_streamlit_app/blob/main/logs-insights-results-may6l4d.csv")
+my_fruit_list = pd.read_csv("https://github.com/slevinas/zig_first_streamlit_app/blob/main/gggggg.csv")
 
 # set the df index to the fruits names
 my_fruit_list = my_fruit_list.set_index('Fruit')
